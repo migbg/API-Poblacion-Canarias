@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('poblacions', function (Blueprint $table) {
             $table->id();
+            $table->integer('periodo');
+            $table->enum('sexo', ['F', 'M']);
+            $table->integer('edad');
+            $table->integer('cantidad');
+            $table->string('codigo_municipio');
+            $table->foreign('codigo_municipio')->references('codigo')->on('municipios');
             $table->timestamps();
         });
     }

@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('islas', function (Blueprint $table) {
-            $table->id();
+            $table->string('gcd_isla')->primary();
+            $table->string('nombre');
+            $table->string('gcd_provincia');
+            $table->foreign('gcd_provincia')->references('gcd_provincia')->on('provincias');
             $table->timestamps();
         });
     }

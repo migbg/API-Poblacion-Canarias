@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('provincias', function (Blueprint $table) {
-            $table->id();
+            $table->string('gcd_provincia')->primary();
+            $table->string('nombre');
             $table->timestamps();
         });
     }
