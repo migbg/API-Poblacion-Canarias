@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            ProvinciasSeeder::class
+            ProvinciasSeeder::class,
+            IslasSeeder::class,
+            MunicipiosSeeder::class,
+            PoblacionsSeeder::class
         ]);
     }
 }
