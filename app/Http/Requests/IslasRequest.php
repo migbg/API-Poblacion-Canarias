@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MunicipiosRequest extends FormRequest
+class IslasRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,6 +12,15 @@ class MunicipiosRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation()
+    {
+        if ($this->has('desglosado')) {
+            $this->merge([
+                'desglosado' => filter_var($this->desglosado, FILTER_VALIDATE_BOOLEAN)
+            ]);
+        }
     }
 
     /**
@@ -24,7 +33,8 @@ class MunicipiosRequest extends FormRequest
         $ageCheck = 'filled|integer|between:0,100';
 
         return [
-            'municipio' => 'required',
+            'isla' => 'required|string',
+            'desglosado' => 'filled|boolean',
             'edad' => $ageCheck,
             'edad_min' => $ageCheck . '|exclude_with:edad',
             'edad_max' => $ageCheck . '|exclude_with:edad',
@@ -43,11 +53,12 @@ class MunicipiosRequest extends FormRequest
         $ageCheck = 'La edad debe ser un valor entre 0 y 100';
 
         return [
-            'municipio' => 'El municipio es obligatorio',
+            'isla' => 'La isla es obligatoria',
+            'desglosado' => 'El parámetro desglosado debe ser equivalente a un booleano',
             'edad' => $ageCheck,
             'edad_min' => $ageCheck,
             'edad_max' => $ageCheck,
-            'periodo' => 'Los pariodos válidos son desde 2021 hasta 2025',
+            'periodo' => 'Los periodos válidos son desde 2021 hasta 2025',
             'sexo' => 'El sexo debe ser M (hombres) o F (mujeres)'
         ];
     }

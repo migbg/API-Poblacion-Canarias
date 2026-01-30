@@ -17,3 +17,4 @@ Route::get('/status', function(){
 });
 
 Route::get('municipios', [ApiController::class, 'municipios']);
+Route::get('islas', [ApiController::class, 'islas']);
