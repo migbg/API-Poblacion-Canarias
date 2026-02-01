@@ -24,7 +24,7 @@ class MunicipiosRequest extends FormRequest
         $ageCheck = 'filled|integer|between:0,100';
 
         return [
-            'municipio' => 'required',
+            'nombre' => 'required',
             'edad' => $ageCheck,
             'edad_min' => $ageCheck . '|exclude_with:edad',
             'edad_max' => $ageCheck . '|exclude_with:edad',
@@ -43,7 +43,7 @@ class MunicipiosRequest extends FormRequest
         $ageCheck = 'La edad debe ser un valor entre 0 y 100';
 
         return [
-            'municipio' => 'El municipio es obligatorio',
+            'nombre' => 'El municipio es obligatorio',
             'edad' => $ageCheck,
             'edad_min' => $ageCheck,
             'edad_max' => $ageCheck,

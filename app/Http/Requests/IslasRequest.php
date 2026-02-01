@@ -33,7 +33,7 @@ class IslasRequest extends FormRequest
         $ageCheck = 'filled|integer|between:0,100';
 
         return [
-            'isla' => 'required|string',
+            'nombre' => 'required|string',
             'desglosado' => 'filled|boolean',
             'edad' => $ageCheck,
             'edad_min' => $ageCheck . '|exclude_with:edad',
@@ -53,7 +53,7 @@ class IslasRequest extends FormRequest
         $ageCheck = 'La edad debe ser un valor entre 0 y 100';
 
         return [
-            'isla' => 'La isla es obligatoria',
+            'nombre' => 'La isla es obligatoria',
             'desglosado' => 'El parámetro desglosado debe ser equivalente a un booleano',
             'edad' => $ageCheck,
             'edad_min' => $ageCheck,

@@ -16,5 +16,7 @@ Route::get('/status', function(){
     ]);
 });
 
-Route::get('municipios', [ApiController::class, 'municipios']);
-Route::get('islas', [ApiController::class, 'islas']);
+# Para peticiones añadir header de Accept:application/json
+Route::get('municipio', [ApiController::class, 'municipios']);
+Route::get('isla', [ApiController::class, 'islas']);
+Route::get('buscar', [ApiController::class, 'buscar']);
